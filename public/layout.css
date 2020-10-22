@@ -16,4 +16,8 @@ h1{
     width : 200px;
     border: 1px ridge black;
     padding : 20px;
+    background-color: transparent;
+}
+.img:hover{
+    border: 5px solid red;
 }
