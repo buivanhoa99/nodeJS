@@ -1,0 +1,19 @@
+#wrapper{
+    background-color: #cee8c5;
+    width:90%;
+    margin: 20px auto;
+    border:1px solid #4a5745;
+    padding :10px;
+}
+h1{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30;
+    
+}
+.img{
+    height: 200px;
+    width : 200px;
+    border: 1px ridge black;
+    padding : 20px;
+}
