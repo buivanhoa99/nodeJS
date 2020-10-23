@@ -17,7 +17,7 @@ h1{
     width : 200px;
     border: 1px ridge black;
     padding : 20px;
-    transition: padding 2s;
+    transition: padding 1s;
 }
 .img:hover{
     border: 2px solid red;
