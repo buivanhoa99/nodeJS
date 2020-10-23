@@ -1,22 +1,11 @@
-const fs = require('fs');
+document.body.onclick = function (e) {
+    var isRightMB;
+    e = e || window.event;
 
-// directory path
-const dir = './image/';
+    if ("which" in e)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+        isRightMB = e.which == 3; 
+    else if ("button" in e)  // IE, Opera 
+        isRightMB = e.button == 2; 
 
-// list all files in the directory
-var name = [];
-fs.readdir(dir, (err, files) => {
-    if (err) {
-        throw err;
-    }
-
-    // files object contains all files names
-    // log them on console
-    files.forEach(file => {
-        //console.log(file);
-        name.push(file);
-    });
-    name =files;
-    console.log("ABC"+name);
-});
-
+    alert("Right mouse button " + (isRightMB ? "" : " was not") + "clicked!");
+} 

@@ -16,4 +16,10 @@ socket.on("server-send-new-file",function(data){
 
 $(document).ready(function(){
     socket.emit("client-get-files");
+    $("#a1").mousedown(function(ev){
+        if(ev.which == 3)
+        {
+              alert("Right mouse button clicked on element with id myId");
+        }
+  });
  });

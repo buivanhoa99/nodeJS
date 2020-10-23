@@ -5,8 +5,20 @@
 <script src="/socket.io/socket.io.js"></script>
 <link rel="stylesheet" type ="text/css" href="layout.css">
 <script src="./xuly.js">
-   
+document.body.onclick = function (e) {
+    var isRightMB;
+    e = e || window.event;
+
+    if ("which" in e)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+        isRightMB = e.which == 3; 
+    else if ("button" in e)  // IE, Opera 
+        isRightMB = e.button == 2; 
+
+    alert("Right mouse button " + (isRightMB ? "" : " was not") + "clicked!");
+}    
 </script>
+
+
 </head>
 <body>
 
@@ -14,6 +26,6 @@
    <h1> Website quản lý ảnh</h1>
    <div id="listImage"></div>
 </div>
-
+<p id ="a1">ádasdsad</p>
 </body>
 </html>
