@@ -12,12 +12,16 @@ h1{
     
 }
 .img{
+    margin : 20px;
     height: 200px;
     width : 200px;
     border: 1px ridge black;
     padding : 20px;
     background-color: transparent;
+    transition: padding 1s;
 }
 .img:hover{
-    border: 5px solid red;
+    border: 2px solid red;
+    padding: 40px;
+    
 }
