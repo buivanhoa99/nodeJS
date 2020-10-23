@@ -1,5 +1,5 @@
 
-var socket = io("192.168.0.101");
+var socket = io("52.146.10.164");
 
 socket.on("server-send-files",function(data){
     for(let i=0;i<data.length;i++){
