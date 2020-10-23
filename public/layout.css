@@ -17,18 +17,10 @@ h1{
     width : 200px;
     border: 1px ridge black;
     padding : 20px;
-    background-color: transparent;
-<<<<<<< HEAD
-    transition: padding 1s;
+    transition: padding 2s;
 }
 .img:hover{
     border: 2px solid red;
-    padding: 50px;
+    padding: 40px;
     
 }
-=======
-}
-.img:hover{
-    border: 5px solid red;
-}
->>>>>>> 338dd9af475b97c3826e6cd104cf0be7d69e9be8
