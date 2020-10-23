@@ -17,11 +17,11 @@ h1{
     width : 200px;
     border: 1px ridge black;
     padding : 20px;
-    transition: height 1s, width:1s;
+    transition : height 1s, width 1s;
 }
 .img:hover{
     border: 2px solid red;
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width : 250px;
     
 }
