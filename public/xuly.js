@@ -2,7 +2,6 @@
 var socket = io("localhost:80");
 
 socket.on("server-send-files",function(data){
-    alert(111);
     for(let i=0;i<data.length;i++){
         let link = "/image/"+data[i];
 
@@ -10,7 +9,6 @@ socket.on("server-send-files",function(data){
     }
 });
 socket.on("server-send-new-file",function(data){
-    alert(222);
     let name = "./image/" + data;
     $("#listImage").append("<a target ='_blank' href="+name+"><img class='img' src="+name+"></a>");
 });
