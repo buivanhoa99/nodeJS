@@ -13,7 +13,7 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var onlineUsers =[];
-var server = require("http").Server(app).listen(80);
+var server = require("http").Server(app).listen(8080);
 var io = require("socket.io")(server);
 
 
