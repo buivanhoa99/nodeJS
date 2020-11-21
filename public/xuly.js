@@ -1,5 +1,5 @@
 
-var socket = io("40.76.138.140");
+var socket = io("40.76.138.140:8080");
 
 socket.on("server-send-files",function(data){
     for(let i=0;i<data.length;i++){

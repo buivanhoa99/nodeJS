@@ -13,7 +13,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var onlineUsers =[];
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-server.listen(80);
+server.listen(8080);
 
 const dir = './public/image/';
 
