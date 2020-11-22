@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
-var socket = io("52.249.219.179");
-=======
-var socket = io("40.76.138.140:80");
->>>>>>> 75e0685e49ff9f36b698df5b23e264b64df02f0c
+var socket = io("52.249.219.179:80");
 
 socket.on("server-send-files",function(data){
     for(let i=0;i<data.length;i++){
