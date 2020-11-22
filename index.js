@@ -50,3 +50,4 @@ function getTime(){
 app.get("/",function(req,res){
   res.render("trangchu");
 });
+
