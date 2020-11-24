@@ -1,11 +1,29 @@
-document.body.onclick = function (e) {
-    var isRightMB;
-    e = e || window.event;
+var express = require('express')
+var bodyParser = require('body-parser')
 
-    if ("which" in e)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
-        isRightMB = e.which == 3; 
-    else if ("button" in e)  // IE, Opera 
-        isRightMB = e.button == 2; 
+var app = express()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+// parse application/x-www-form-urlencoded
+app.use(urlencodedParser)
+var jsonParser = bodyParser.json()
+// parse application/json
+app.use(bodyParser.json())
+app.use(function (req, res) {
+  res.setHeader('Content-Type', 'text/plain')
+  res.write('you posted:\n')
+  res.end(JSON.stringify(req.body, null, 2))
+})
 
-    alert("Right mouse button " + (isRightMB ? "" : " was not") + "clicked!");
-} 
+app.post('/login', urlencodedParser, function (req, res) {
+  res.send('welcome, ' + req.body.username)
+})
+
+app.get('/login', urlencodedParser, function (req, res) {
+  res.send('welcome, ' + req.body.username)
+})
+
+// POST /api/users gets JSON bodies
+app.post('/api/users', jsonParser, function (req, res) {
+  // create user in req.body
+})
+app.listen(8000);

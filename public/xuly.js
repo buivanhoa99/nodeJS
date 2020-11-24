@@ -1,5 +1,5 @@
 
-var socket = io("52.249.219.179:80");
+var socket = io("52.249.219.179");
 
 socket.on("server-send-files",function(data){
     for(let i=0;i<data.length;i++){
@@ -13,6 +13,8 @@ socket.on("server-send-new-file",function(data){
     let name = "./image/" + data;
     $("#listImage").append("<a target ='_blank' href="+name+"><img class='img' src="+name+"></a>");
 });
+
+
 
 $(document).ready(function(){
     socket.emit("client-get-files");

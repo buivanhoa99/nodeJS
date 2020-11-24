@@ -5,6 +5,7 @@
 <script src ="jquery.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <link rel="stylesheet" type ="text/css" href="layout.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="./xuly.js">
 
 </script>
@@ -13,9 +14,18 @@
 </head>
 <body>
 
+<% if (userName) { %>
+<div class="d-inline float-right">Hello <span class = "text-primary font-weight-bold display-4">
+    
+     <%= userName %>
+     
+</span>  </div>
+<%}%>
+
+<h1> Website quản lý ảnh</h1>
 <div id = "wrapper">
-   <h1> Website quản lý ảnh</h1>
-   <div id="listImage"></div>
-</div>
+        <div id="listImage"></div>
+ </div>
+
 </body>
 </html>
