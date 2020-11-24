@@ -19,10 +19,9 @@ const accountModel = require("./models/account.model");
 const dir = './public/image/';
 
 io.on("connection",function(socket){
-  socket.on("client-get-files",function(){
+    socket.on("client-get-files",function(){
     fs.readdir(dir, (err, files) => {
     socket.emit("server-send-files",files);
-    //console.log(files);
   });
   });
 });
