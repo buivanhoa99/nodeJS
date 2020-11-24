@@ -13,13 +13,9 @@
 
 </head>
 <body>
-
-<% if (userName) { %>
-<div class="d-inline float-right">Hello <span class = "text-primary font-weight-bold display-4">
-    
-     <%= userName %>
-     
-</span>  </div>
+    <% if(kt){%> 
+<div class="d-inline float-right">Hello 
+  <span class = "text-primary font-weight-bold display-4">  <%- userName%></span>  </div>
 <%}%>
 
 <h1> Website quản lý ảnh</h1>

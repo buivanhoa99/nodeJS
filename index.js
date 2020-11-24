@@ -53,7 +53,7 @@ function getTime(){
 }
 
 app.get("/",function(req,res){
-  res.render("trangchu");
+  res.render("trangchu",{kt:false});
   });
 
 
@@ -75,7 +75,7 @@ app.post('/login', function (req, res) {
     else {
       console.log("co tim thay"+kq);
       if (kq.password == value.passWord) {
-        res.render("trangchu",{userName:value.userName})
+        res.render("trangchu",{userName:value.userName,kt:true})
       }
        else {
         res.render("login")
