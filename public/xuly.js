@@ -1,11 +1,12 @@
 
-var socket = io("52.249.219.179:80");
+var socket = io("192.168.0.100:80");
 
 socket.on("server-send-files",function(data){
     for(let i=0;i<data.length;i++){
         let link = "/image/"+data[i];
 
         $("#listImage").append("<a target ='_blank' href="+link+"><img class='img' src="+link+"></a>");
+        alert("123");
     }
 });
 socket.on("server-send-new-file",function(data){
