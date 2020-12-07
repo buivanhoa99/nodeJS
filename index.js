@@ -1,8 +1,7 @@
-var fs = require("fs");
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-
+var fs = require("fs")
 app.use(express.static("public"));
 
 app.set("view engine","ejs");
@@ -16,8 +15,7 @@ var io = require("socket.io")(server);
 server.listen(80);
 const Database = require('./models/database');
 const accountModel = require("./models/account.model");
-const dir = './public/image/';
-
+dir = require("./configure").dir;
 io.on("connection",function(socket){
     socket.on("client-get-files",function(){
     fs.readdir(dir, (err, files) => {
@@ -84,24 +82,4 @@ app.post('/login', function (req, res) {
 })
 })
 
-app.post('/api/login', function (req, res) {
-  value = {
-    userName :req.body.userName,
-    passWord :req.body.passWord
-  }
-  console.log(value)
-  var AccouctModel = require("./models/account.model");
-  accountModel.findOne({username:value.userName},(err,kq)=>{
-    if (!kq) {
-      console.log("Khong thay kq");
-      res.send("0");
-    }
-    else {
-      console.log("co tim thay"+kq);
-      if (kq.password == value.passWord) {
-        res.send("1");
-      }
-       else res.send("0");
-    }
-})
-})
+app.use("/api",require("./routes/api.route"))
