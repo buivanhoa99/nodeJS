@@ -11,7 +11,6 @@ router.post('/login', function (req, res) {
       passWord :req.body.passWord
     }
     console.log(value)
-    var AccouctModel = require("../models/account.model")
     console.log(accountModel)
     accountModel.findOne({username:value.userName},(err,kq)=>{
       if (!kq) {
@@ -28,11 +27,57 @@ router.post('/login', function (req, res) {
   })
   })
 
-router.get("/images",(req,res)=>{
-    fs.readdir(dir, (err, files) => {
-        console.log("Gui list file");
-        res.send(files);
-      });
+
+router.get("/images/user/:id",(req,res)=>{
+  let user = req.params.id;
+  if (user!="all"){
+    accountModel.findOne({username:user},(err,result)=>{
+      
+      if (result){
+        output = []
+        result.image.forEach(e=>{
+          obj = {
+            user : user,
+            name : e.name,
+            time : e.time,
+            des  : e.des,
+          }
+          output.push(obj)
+        })
+        res.send(output)
+      }
+      else 
+      res.send("ERROR!");
+    })
+    }
+  else
+    {
+      accountModel.find({},(err,result)=>{
+        output =[]
+        result.forEach(e=>{
+          e.image.forEach(e1=>{
+            obj = {
+              user : e.username,
+              name : e1.name,
+              time : e1.time,
+              des  : e1.des,
+            }
+            output.push(obj)
+          })
+        })
+        res.send(output)
+      })
+    }
+})
+
+router.get("/users",(req,res)=>{
+  accountModel.find((err,result)=>{
+    let Users = [];
+    result.forEach((value)=>{
+      Users.push({"user":value.username})
+    })
+    res.send(Users);
+  })
 })
 
 module.exports = router

@@ -1,4 +1,5 @@
 var express = require("express");
+var crypto = require("crypto");
 var app = express();
 var bodyParser = require('body-parser');
 var fs = require("fs")
@@ -29,24 +30,31 @@ app.use(urlencodedParser);
 
 app.post('/', function (req, res) {
     value = {
-      time : req.body.time,
-      userName : req.body.userName
+      user : req.body.user,
+      des: req.body.des,
     }
-    console.log(value);
+    console.log("value= ",value);
     var pass64 = req.body.image;
     let length=  pass64.length;
     //var pass64 = Buffer.from(pass).toString('base64');
     console.log("PASS 64:" + length);
     let buff = new Buffer(pass64, 'base64');
-    var name  = getTime();
+    var name  = crypto.randomBytes(20).toString('hex');
     fs.writeFileSync("./public/image/"+name + ".png", buff);
       res.send("Successful");
     io.sockets.emit("server-send-new-file",name+".png");
-    
+    accountModel.findOne({username:value.user},(err,result)=>{
+      console.log(result)
+      console.log(Array.isArray(result.image))
+      result.image.push({name:name+".png",time:getTime(),des:value.des})
+      result.save();
+      return;
+    })
   });
+
 function getTime(){
   var date = new Date();
-  var name = date.getHours()+"H-" + date.getMinutes()+ "M-"+date.getSeconds() +"S-"+ date.getFullYear() + "-" + date.getMonth() +"-"+date.getDate();
+  var name = date.getHours()+"H-" + date.getMinutes()+ "M-"+date.getSeconds() +"S-"+ date.getFullYear() + "-" + (parseInt(date.getMonth())+1) +"-"+date.getDate();
   return name;
 }
 
@@ -58,6 +66,7 @@ app.get("/",function(req,res){
 app.get("/login",(req,res) =>{
   res.render('login');
 });
+
  
 app.post('/login', function (req, res) {
   value = {
@@ -81,5 +90,6 @@ app.post('/login', function (req, res) {
     }
 })
 })
+
 
 app.use("/api",require("./routes/api.route"))

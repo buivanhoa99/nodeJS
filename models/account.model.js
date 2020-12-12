@@ -5,7 +5,8 @@ var account = new mongoose.Schema({
     image : [
       {
         name : String,
-        time : String
+        time : String,
+        des  : String,
       }
     ]
   }, { 
