@@ -14,11 +14,9 @@ router.post('/login', function (req, res) {
     console.log(accountModel)
     accountModel.findOne({username:value.userName},(err,kq)=>{
       if (!kq) {
-        console.log("Khong thay kq");
         res.send("0");
       }
       else {
-        console.log("co tim thay"+kq);
         if (kq.password == value.passWord) {
           res.send("1");
         }
@@ -80,4 +78,29 @@ router.get("/users",(req,res)=>{
   })
 })
 
+router.delete("/images/:name",(req,res)=>{
+  
+  let nameOfImage = req.params.name;
+  console.log(nameOfImage)
+  try {
+    fs.unlinkSync(require("../configure").dir+name)
+
+  } catch(err) {
+    console.error(err)
+  }
+
+  accountModel.findOne().where("image.name").equals(nameOfImage).exec((err,result)=>{
+  // accountModel.findOne({"image.name":nameOfImage},(err,result)=>{
+
+    result.image = result.image.filter((obj)=>{
+      return obj.name != nameOfImage;
+    })
+    console.log("image",result.image)
+   
+    result.save();
+  res.send("OK");
+})
+})
+
 module.exports = router
+
