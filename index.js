@@ -52,6 +52,7 @@ app.post('/', function (req, res) {
     })
   });
 
+
 function getTime(){
   var date = new Date();
   var name = date.getHours()+"H-" + date.getMinutes()+ "M-"+date.getSeconds() +"S-"+ date.getFullYear() + "-" + (parseInt(date.getMonth())+1) +"-"+date.getDate();
@@ -90,8 +91,5 @@ app.post('/login', function (req, res) {
     }
 })
 })
-
-
-
 
 app.use("/api",require("./routes/api.route"))
