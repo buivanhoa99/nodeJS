@@ -83,14 +83,14 @@ router.delete("/images/:name",(req,res)=>{
   let nameOfImage = req.params.name;
   console.log(nameOfImage)
   try {
-    fs.unlinkSync(require("../configure").dir+name)
+    fs.unlinkSync(require("../configure").dir+nameOfImage)
 
   } catch(err) {
-    console.error(err)
+  console.error(err)
   }
 
   accountModel.findOne().where("image.name").equals(nameOfImage).exec((err,result)=>{
-  // accountModel.findOne({"image.name":nameOfImage},(err,result)=>{
+
 
     result.image = result.image.filter((obj)=>{
       return obj.name != nameOfImage;
